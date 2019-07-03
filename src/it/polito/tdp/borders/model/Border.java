@@ -17,6 +17,5 @@ public class Border {
 	public Country getC2() {
 		return c2;
 	}
-	
-	
+
 }

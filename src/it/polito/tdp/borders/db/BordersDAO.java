@@ -15,11 +15,9 @@ public class BordersDAO {
 
 	public List<Country> loadAllCountries(Map<Integer,Country> idMap) {
 
-		String sql = "SELECT c.CCode, c.StateAbb, c.StateNme " + 
-					 "FROM country AS c, contiguity AS cont " + 
-					 "WHERE c.CCode = cont.state1no OR c.CCode = cont.state2no " + 
-					 "GROUP BY c.CCode " + 
-					 "ORDER BY StateAbb";
+		String sql = "SELECT CCode, StateAbb, StateNme " + 
+					 "FROM country";
+		
 		List<Country> result = new ArrayList<Country>();
 		
 		try {
@@ -66,9 +64,12 @@ public class BordersDAO {
 				
 				borders.add(b);
 			}
+			
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		
 		return borders;
 	}
